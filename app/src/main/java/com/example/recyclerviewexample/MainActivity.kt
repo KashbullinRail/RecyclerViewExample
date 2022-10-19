@@ -31,13 +31,13 @@ class MainActivity : AppCompatActivity() {
             rvPicture.layoutManager = GridLayoutManager(this@MainActivity, 2)
             rvPicture.adapter = adapter
             btnAddPicture.setOnClickListener {
-                if(index > 5) index = 0
-                val picture = Picture(pictureList[index], "Picture ${index+1}")
+                if (index > 5) index = 0
+                val picture = Picture(pictureList[index], "Picture ${index + 1}")
                 adapter.addPicture(picture)
                 index++
+
             }
         }
-
     }
 
 }
