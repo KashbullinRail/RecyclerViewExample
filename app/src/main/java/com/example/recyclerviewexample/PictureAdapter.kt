@@ -38,4 +38,10 @@ class PictureAdapter: RecyclerView.Adapter<PictureAdapter.PictureHolder>() {
         notifyDataSetChanged()
     }
 
+//    fun addAllPicture(list: List<Picture>){
+//        pictureList.clear()
+//        pictureList.addAll(list)
+//        notifyDataSetChanged()
+//    }
+
 }
