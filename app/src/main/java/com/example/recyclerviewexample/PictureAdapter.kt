@@ -6,17 +6,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerviewexample.databinding.ItemPictureBinding
 
-class PictureAdapter : RecyclerView.Adapter<PictureAdapter.PictureHolder>() {
+class PictureAdapter(val listener: Listener) : RecyclerView.Adapter<PictureAdapter.PictureHolder>() {
 
     val pictureList = ArrayList<Picture>()
 
     class PictureHolder(item: View) : RecyclerView.ViewHolder(item) {
 
         val binding = ItemPictureBinding.bind(item)
-        fun bind(picture: Picture) = with(binding) {
+
+        fun bind(picture: Picture, listener: Listener) = with(binding) {
             ivPicture.setImageResource(picture.imageId)
             tvTitle.text = picture.title
 
+            itemView.setOnClickListener {
+                listener.onClick(picture)
+            }
         }
 
     }
@@ -27,7 +31,7 @@ class PictureAdapter : RecyclerView.Adapter<PictureAdapter.PictureHolder>() {
     }
 
     override fun onBindViewHolder(holder: PictureHolder, position: Int) {
-        holder.bind(pictureList[position])
+        holder.bind(pictureList[position], listener)
     }
 
     override fun getItemCount(): Int {
