@@ -42,6 +42,9 @@ class MainActivity : AppCompatActivity(), Listener {
 
     override fun onClick(picture: Picture) {
        Toast.makeText(this, "нажали на ${picture.title}", Toast.LENGTH_LONG).show()
+        startActivity(Intent(this, ContentActivity::class.java).apply {
+            putExtra("item", picture)
+        })
     }
 
 }
